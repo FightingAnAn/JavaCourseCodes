@@ -1,5 +1,6 @@
-package java0.nio01.netty;
+package io.github.ningtianjing.homework02.netty;
 
+import io.github.ningtianjing.homework02.HttpClientUtil;
 import io.netty.buffer.Unpooled;
 import io.netty.channel.ChannelFutureListener;
 import io.netty.channel.ChannelHandlerContext;
@@ -9,7 +10,6 @@ import io.netty.handler.codec.http.FullHttpRequest;
 import io.netty.handler.codec.http.FullHttpResponse;
 import io.netty.handler.codec.http.HttpUtil;
 import io.netty.util.ReferenceCountUtil;
-import java0.nio01.util.HttpClientUtil;
 
 import static io.netty.handler.codec.http.HttpHeaderNames.CONNECTION;
 import static io.netty.handler.codec.http.HttpHeaderValues.KEEP_ALIVE;
@@ -45,8 +45,7 @@ public class HttpHandler extends ChannelInboundHandlerAdapter {
     private void handlerTest(FullHttpRequest fullRequest, ChannelHandlerContext ctx) {
         FullHttpResponse response = null;
         try {
-//            String value = null; // "hello,kimmking"; // 对接上次作业的httpclient或者okhttp请求另一个url的响应数据
-
+            //modify by ningtianjing 2021-01-27
             String value = HttpClientUtil.doGet("http://localhost:8801");
 
             response = new DefaultFullHttpResponse(HTTP_1_1, OK, Unpooled.wrappedBuffer(value.getBytes("UTF-8")));
